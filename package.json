@@ -1,0 +1,30 @@
+{
+  "name": "livekit-sip-agent-setup",
+  "version": "1.0.0",
+  "description": "LiveKit SIP trunk and dispatch rule setup for agent/bot calling",
+  "type": "module",
+  "main": "livekit-sip-setup.js",
+  "scripts": {
+    "start": "node livekit-sip-setup.js",
+    "list": "node examples/list-resources.js",
+    "api": "node api-server.js"
+  },
+  "keywords": [
+    "livekit",
+    "sip",
+    "voip",
+    "agent",
+    "bot",
+    "telephony"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "livekit-server-sdk": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  }
+}

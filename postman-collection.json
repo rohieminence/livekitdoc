@@ -1,0 +1,141 @@
+{
+  "info": {
+    "name": "LiveKit SIP Management API",
+    "description": "API endpoints to manage SIP trunks and dispatch rules",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create SIP Trunk",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"My Agent Trunk\",\n  \"phoneNumbers\": [\"+12345678900\"],\n  \"metadata\": \"Created via API\",\n  \"krispEnabled\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/sip/trunk",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "trunk"]
+        },
+        "description": "Create a new SIP inbound trunk"
+      }
+    },
+    {
+      "name": "Create Dispatch Rule (Individual)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trunkId\": \"ST_MdFGqqPRBLQ7\",\n  \"name\": \"Agent Dispatch Rule\",\n  \"type\": \"individual\",\n  \"roomPrefix\": \"call\",\n  \"pin\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/sip/dispatch-rule",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "dispatch-rule"]
+        },
+        "description": "Create dispatch rule with individual rooms per call"
+      }
+    },
+    {
+      "name": "Create Dispatch Rule (Direct)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trunkId\": \"ST_MdFGqqPRBLQ7\",\n  \"name\": \"Direct Dispatch Rule\",\n  \"type\": \"direct\",\n  \"roomName\": \"main-support-room\",\n  \"pin\": \"1234\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/sip/dispatch-rule",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "dispatch-rule"]
+        },
+        "description": "Create dispatch rule where all calls go to same room"
+      }
+    },
+    {
+      "name": "List All Trunks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/sip/trunks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "trunks"]
+        },
+        "description": "Get list of all SIP trunks"
+      }
+    },
+    {
+      "name": "List All Dispatch Rules",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/sip/dispatch-rules",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "dispatch-rules"]
+        },
+        "description": "Get list of all dispatch rules"
+      }
+    },
+    {
+      "name": "Delete SIP Trunk",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/sip/trunk/ST_xxxxx",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "trunk", "ST_xxxxx"]
+        },
+        "description": "Delete a SIP trunk by ID"
+      }
+    },
+    {
+      "name": "Delete Dispatch Rule",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/sip/dispatch-rule/SDR_xxxxx",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "sip", "dispatch-rule", "SDR_xxxxx"]
+        },
+        "description": "Delete a dispatch rule by ID"
+      }
+    }
+  ]
+}
